@@ -1,3 +1,4 @@
+import 'package:cfg_admin/pages/pi_details.dart';
 import 'package:flutter/material.dart';
 
 mixin SideNav {
@@ -38,6 +39,10 @@ mixin SideNav {
                 fontSize: 24,
               ),
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
           ),
           ListTile(
             leading: Icon(Icons.message),
