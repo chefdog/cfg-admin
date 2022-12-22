@@ -1,6 +1,6 @@
 import 'package:cfg_admin/mixins/sidenav.dart';
+import 'package:cfg_admin/widgets/widget_dashboard.dart';
 import 'package:flutter/material.dart';
-import '../widgets/widget_dashboard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SideNav {
+class _HomePageState extends State<HomePage> with SideNav, DashBoardWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +19,9 @@ class _HomePageState extends State<HomePage> with SideNav {
       drawer: getDrawer(Theme.of(context)),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            titleSection,
+            getCards(context),
           ],
         ),
       ),
