@@ -1,7 +1,8 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-#refrence : https://adamprescott.net/2020/02/27/run-an-asp-net-core-app-on-raspberry-pi-with-docker/
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0.12-bullseye-slim-arm32v7 AS base
+
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -9,16 +10,17 @@ EXPOSE 7048
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["PiWwbApi.csproj", "."]
-RUN dotnet restore "./PiWwbApi.csproj"
+
+COPY ["cfg.pi.webapi/cfg.pi.webapi.csproj", "cfg.pi.webapi/"]
+RUN dotnet restore "cfg.pi.webapi/cfg.pi.webapi.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "PiWwbApi.csproj" -c Release -o /app/build
+WORKDIR "/src/cfg.pi.webapi"
+RUN dotnet build "cfg.pi.webapi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "PiWwbApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "cfg.pi.webapi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PiWwbApi.dll"]
+ENTRYPOINT ["dotnet", "cfg.pi.webapi.dll"]

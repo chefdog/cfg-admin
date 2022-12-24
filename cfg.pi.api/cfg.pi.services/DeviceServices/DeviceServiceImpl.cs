@@ -5,11 +5,19 @@ namespace cfg.pi.services.DeviceServices
 {
     public class DeviceServiceImpl : DeviceService
     {
+        
+
+        public DeviceServiceImpl() {
+        
+        }
+
         public async Task<HealthDto> GetDeviceInformation()
         {
             var healthDto = new HealthDto();
             healthDto.Tempatures = GetDeviceTempature();
-
+            healthDto.Processors = GetDeviceProcessorsInformation();
+            healthDto.ProcessorCount = Environment.ProcessorCount;
+            healthDto.SystemUptime = Environment.TickCount;
             return healthDto;
         }
 
@@ -23,8 +31,11 @@ namespace cfg.pi.services.DeviceServices
                 {
                     if (!double.IsNaN(entry.Temperature.DegreesCelsius))
                     {
-                        // Console.WriteLine($"Temperature from {entry.Sensor.ToString()}: {entry.Temperature.DegreesCelsius} °C");
-                        result.Add(new DeviceTempatureDto { SensorName = entry.Sensor.ToString(), Tempature = entry.Temperature.DegreesCelsius });
+                        result.Add(new DeviceTempatureDto { 
+                            SensorName = entry.Sensor.ToString(), 
+                            Tempature = entry.Temperature.DegreesCelsius,
+                            TempatureInCelcius = true,
+                        });
                     }
                     else
                     {
@@ -35,6 +46,18 @@ namespace cfg.pi.services.DeviceServices
             }
 
             return result;
+        }
+
+        private List<DeviceProcessorDto> GetDeviceProcessorsInformation() {
+            var cpuCount = Environment.ProcessorCount;
+            return new List<DeviceProcessorDto>
+            {
+
+                new DeviceProcessorDto
+                {
+                      
+                }
+            };
         }
     }
 }
