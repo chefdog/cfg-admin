@@ -6,6 +6,21 @@ Iot package: (https://github.com/dotnet/iot/tree/main/samples)
 
 And (https://learn.microsoft.com/en-us/dotnet/iot/intro)
 
+And (https://github.com/johannesegger/SenseHatNet)
+
+And (https://stackoverflow.com/questions/74182482/unable-to-access-sensehet-in-net-core-dockerized-application)
+
+
+### setup
+
+install rasberry pi OS lite
+install rust
+install python
+install docker and
+install docker compose: sudo apt install docker-compose
+
+
+
 # flutter_application_admin
 
 A new Flutter project.
