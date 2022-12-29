@@ -2,7 +2,7 @@
 {
     public class HealthDto
     {
-        public string Enironment { get; set; }
+        public string Environment { get; set; }
 
         public List<DeviceTempatureDto> Tempatures { get; set; }
 

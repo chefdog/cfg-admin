@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  control-sense-hat:
+  cfg-pi-webapi:
     container_name: cfgpi
     build: .
     privileged: true
-    volumes:
+
       

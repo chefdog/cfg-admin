@@ -22,7 +22,7 @@ namespace cfg.pi.webapi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetHealthProbeAsync() {
             var result = await deviceService.GetDeviceInformation();
-            result.Enironment = hostEnvironment.EnvironmentName;
+            result.Environment = hostEnvironment.EnvironmentName;
             return Ok(result);
         }
 

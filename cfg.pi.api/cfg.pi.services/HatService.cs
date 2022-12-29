@@ -9,5 +9,7 @@ namespace cfg.pi.services
     public interface HatService
     {
         public bool ExecuteLedMatrix();
+
+        public bool ResetLedMatrix();
     }
 }
