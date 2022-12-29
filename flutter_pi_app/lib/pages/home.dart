@@ -1,5 +1,5 @@
-import 'package:cfg_admin/mixins/sidenav.dart';
-import 'package:cfg_admin/widgets/widget_dashboard.dart';
+import 'package:flutter_pi_app/mixins/sidenav.dart';
+import 'package:flutter_pi_app/widgets/widget_dashboard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

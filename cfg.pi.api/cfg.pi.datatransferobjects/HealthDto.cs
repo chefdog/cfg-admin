@@ -4,6 +4,8 @@
     {
         public string Environment { get; set; }
 
+        public string SystemName { get; set; }
+
         public List<DeviceTempatureDto> Tempatures { get; set; }
 
         public int ProcessorCount { get; set; }

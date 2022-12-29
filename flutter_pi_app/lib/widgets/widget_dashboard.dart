@@ -15,42 +15,7 @@ mixin DashBoardWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: Card(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        const ListTile(
-                          leading: Icon(
-                            Icons.important_devices,
-                            color: Colors.redAccent,
-                          ),
-                          title: Text('Raspberry pi 01'),
-                          subtitle: Text(
-                            'State: disconnected',
-                            selectionColor: Colors.blue,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            TextButton(
-                              child: const Text('DETAILS'),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => const PiDetailsPage(
-                                      title: 'pi 01 called',
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                            const SizedBox(width: 8),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: 
                 ),
               ],
             ),

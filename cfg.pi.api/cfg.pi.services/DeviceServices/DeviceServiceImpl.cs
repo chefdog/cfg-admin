@@ -18,6 +18,7 @@ namespace cfg.pi.services.DeviceServices
             healthDto.Processors = GetDeviceProcessorsInformation();
             healthDto.ProcessorCount = Environment.ProcessorCount;
             healthDto.SystemUptime = Environment.TickCount;
+            healthDto.SystemName = Environment.MachineName;
             return healthDto;
         }
 
