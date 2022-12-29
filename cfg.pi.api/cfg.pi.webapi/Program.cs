@@ -1,10 +1,12 @@
 using cfg.pi.services;
 using cfg.pi.services.DeviceServices;
+using cfg.pi.services.HatServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<DeviceService, DeviceServiceImpl>();
+builder.Services.AddScoped<HatService, HatServiceImpl>();
 
 
 builder.Services.AddControllers();

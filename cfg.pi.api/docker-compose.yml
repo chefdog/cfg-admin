@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  cfg-pi-webapi:
+    container_name: cfgpi
+    build: .
+    privileged: true
+
+      

@@ -11,15 +11,21 @@ namespace cfg.pi.webapi.Controllers
     public class HealthController : BaseController
     {
         private DeviceService deviceService;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public HealthController(DeviceService service) { 
+        public HealthController(DeviceService service, IWebHostEnvironment environment) { 
             deviceService = service;
+            hostEnvironment = environment;
         }
 
 
         [HttpGet]
         public async Task<IActionResult> GetHealthProbeAsync() {
-            return await ToApiResponse<HealthDto>(deviceService.GetDeviceInformation());
+            var result = await deviceService.GetDeviceInformation();
+            result.Environment = hostEnvironment.EnvironmentName;
+            return Ok(result);
         }
+
+        
     }
 }

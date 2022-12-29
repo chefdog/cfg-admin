@@ -10,5 +10,7 @@ namespace cfg.pi.datatransferobjects
     {
         public string SensorName { get; set; }
         public double Tempature { get; set; }
+
+        public bool TempatureInCelcius { get; set; }
     }
 }
