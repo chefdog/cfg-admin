@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/models/dashboard-card.model.dart';
+import 'package:flutter_pi_app/widgets/sub-title.widget.dart';
 
 import '../widgets/section-title.widget.dart';
 
@@ -15,15 +16,14 @@ class DashboardCarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top:false,
+      top: false,
       bottom: false,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            SectionTitle(
-              title:card.title
-            ),
+            SectionTitle(title: card.title),
+            SubTitle(title: card.subTitle),
           ],
         ),
       ),

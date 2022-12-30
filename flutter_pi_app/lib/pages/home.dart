@@ -37,28 +37,28 @@ class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
       drawer: getDrawer(Theme.of(context)),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            for (final card in cards(context))
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: // start getcards
+                [
               Container(
                 padding: const EdgeInsets.all(32),
                 child: Row(children: [
-                  Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: DashboardCarItem(
-                              card: card,
+                  for (final card in cards(context))
+                    Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: DashboardCarItem(
+                                card: card,
+                              ),
                             ),
-                          ),
-                        ]),
-                  ),
+                          ]),
+                    ),
                 ]),
               ),
-          ],
-        ),
+            ]),
       ),
     );
   }
