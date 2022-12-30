@@ -3,65 +3,30 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_pi_app/models/dashboard-card.model.dart';
 
-import '../pages/pi_details.dart';
+import '../widgets/section-title.widget.dart';
 
-class DashboardCard extends StatelessWidget {
-  // fields
-  final String title;
-  final String subTitle;
-  final MaterialAccentColor iconColor;
-  final MaterialColor textSelectionColor;
-  final String buttonText;
-  // end fields
+class DashboardCarItem extends StatelessWidget {
+  const DashboardCarItem({Key? key, required this.card}) : super(key: key);
 
-  const DashboardCard(
-      {super.key,
-      required this.title,
-      required this.subTitle,
-      required this.iconColor,
-      required this.textSelectionColor,
-      required this.buttonText});
+  final DashboardCard card;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            leading: Icon(
-              Icons.important_devices,
-              color: Colors.redAccent,
+    return SafeArea(
+      top:false,
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            SectionTitle(
+              title:card.title
             ),
-            title: Text(title),
-            subtitle: Text(subTitle ?? ''),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              TextButton(
-                child: const Text('DETAILS'),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const PiDetailsPage(
-                        title: 'pi 01 called',
-                      ),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(width: 8),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
-}
-
-class _CardText extends State<Text> {
-  @override
-  Widget build(BuildContext context) {}
 }
