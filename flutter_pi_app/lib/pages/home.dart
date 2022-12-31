@@ -1,8 +1,8 @@
 import 'package:flutter_pi_app/mixins/sidenav.dart';
 import 'package:flutter/material.dart';
-
-import '../mocks/dashboard-card-data.dart';
-import '../partials/dashboard_card.dart';
+import 'package:flutter_pi_app/models/system-information.model.dart';
+import 'package:flutter_pi_app/services/sys-info.service.dart';
+import '../widgets/dashboard-card.widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
   final RestorableBool isSelected = RestorableBool(false);
+  late Future<SystemInformation> futureModels;
 
   @override
   String get restorationId => 'dashboard';
@@ -29,6 +30,13 @@ class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
   }
 
   @override
+  void initState() {
+    super.initState();
+    futureModels = fetchSysInfo();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,30 +44,43 @@ class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
       ),
       drawer: getDrawer(Theme.of(context)),
       body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: // start getcards
-                [
-              Container(
-                padding: const EdgeInsets.all(32),
-                child: Row(children: [
-                  for (final card in cards(context))
-                    Expanded(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: DashboardCarItem(
-                                card: card,
-                              ),
-                            ),
-                          ]),
-                    ),
-                ]),
-              ),
-            ]),
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          Container(
+            padding: const EdgeInsets.all(32),
+            child: FutureBuilder<SystemInformation>(
+              future: futureModels,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return DashboardCarWidget(
+                      title: snapshot.data!.environment, subTitle: '');
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            ),
+          ),
+        ]),
       ),
     );
   }
 }
+
+
+// child: Row(children: [
+            //   for (final card in cards(context))
+            //     Expanded(
+            //       child: Column(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             Container(
+            //               padding: const EdgeInsets.only(bottom: 8),
+            //               child: DashboardCarItem(
+            //                 card: card,
+            //               ),
+            //             ),
+            //           ]),
+            //     ),
+            // ]

@@ -1,7 +1,4 @@
-﻿using cfg.pi.datatransferobjects;
-using cfg.pi.services;
-using cfg.pi.web;
-using Microsoft.AspNetCore.Http;
+﻿using cfg.pi.web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cfg.pi.webapi.Controllers
@@ -10,22 +7,19 @@ namespace cfg.pi.webapi.Controllers
     [ApiController]
     public class HealthController : BaseController
     {
-        private DeviceService deviceService;
-        private readonly IWebHostEnvironment hostEnvironment;
-
-        public HealthController(DeviceService service, IWebHostEnvironment environment) { 
-            deviceService = service;
-            hostEnvironment = environment;
-        }
-
-
         [HttpGet]
-        public async Task<IActionResult> GetHealthProbeAsync() {
-            var result = await deviceService.GetDeviceInformation();
-            result.Environment = hostEnvironment.EnvironmentName;
-            return Ok(result);
+        public IActionResult Get()
+        {
+            var response = new ResponseModel<string>
+            {
+                Data = "Ping Back",
+                DidError = false,
+                Error = string.Empty
+            };
+
+            return Ok(response);
         }
 
-        
+
     }
 }

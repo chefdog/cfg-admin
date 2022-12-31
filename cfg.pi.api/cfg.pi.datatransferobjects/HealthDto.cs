@@ -2,9 +2,9 @@
 {
     public class HealthDto
     {
-        public string Environment { get; set; }
+        public string OSVersion { get; set; }
 
-        public string SystemName { get; set; }
+        public string MachineName { get; set; }
 
         public List<DeviceTempatureDto> Tempatures { get; set; }
 
@@ -13,5 +13,7 @@
         public List<DeviceProcessorDto> Processors { get; set; }
 
         public int SystemUptime { get; set; }
+
+        public long MemoryAmount { get; set; }
     }
 }

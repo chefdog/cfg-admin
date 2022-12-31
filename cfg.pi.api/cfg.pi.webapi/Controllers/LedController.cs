@@ -1,7 +1,6 @@
 ﻿using cfg.pi.services;
-using Microsoft.AspNetCore.Http;
+using cfg.pi.web;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace cfg.pi.webapi.Controllers
 {
@@ -21,8 +20,16 @@ namespace cfg.pi.webapi.Controllers
             try
             {
                 var result = service.ExecuteLedMatrix();
-                return Ok(result);
-            }catch(Exception ex)
+                var response = new ResponseModel<bool>
+                {
+                    Data = result,
+                    DidError = false,
+                    Error = string.Empty
+                };
+
+                return Ok(response);
+            }
+            catch(Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }

@@ -3,15 +3,17 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_pi_app/models/dashboard-card.model.dart';
 import 'package:flutter_pi_app/widgets/sub-title.widget.dart';
 
-import '../widgets/section-title.widget.dart';
+import 'section-title.widget.dart';
 
-class DashboardCarItem extends StatelessWidget {
-  const DashboardCarItem({Key? key, required this.card}) : super(key: key);
+class DashboardCarWidget extends StatelessWidget {
+  const DashboardCarWidget(
+      {Key? key, required this.title, required this.subTitle})
+      : super(key: key);
 
-  final DashboardCard card;
+  final String title;
+  final String subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,8 @@ class DashboardCarItem extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            SectionTitle(title: card.title),
-            SubTitle(title: card.subTitle),
+            SectionTitle(title: title),
+            SubTitle(title: subTitle),
           ],
         ),
       ),

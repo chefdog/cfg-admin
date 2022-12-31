@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget with AdminTheme {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CFG ADMIN',
+      title: 'CFG PI ADMIN',
       debugShowCheckedModeBanner: false,
       theme: getTheme(),
       home: const HomePage(title: 'DASHBOARD'),

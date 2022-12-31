@@ -7,8 +7,11 @@ namespace cfg.pi.services.DeviceServices
     {
         
 
-        public DeviceServiceImpl() {
-        
+        public async Task<List<HealthDto>> GetDevices() {
+            List<HealthDto> result = new List<HealthDto> {
+                await GetDeviceInformation()
+            };
+            return result;
         }
 
         public async Task<HealthDto> GetDeviceInformation()
@@ -18,7 +21,9 @@ namespace cfg.pi.services.DeviceServices
             healthDto.Processors = GetDeviceProcessorsInformation();
             healthDto.ProcessorCount = Environment.ProcessorCount;
             healthDto.SystemUptime = Environment.TickCount;
-            healthDto.SystemName = Environment.MachineName;
+            healthDto.MachineName = Environment.MachineName;
+            healthDto.MemoryAmount = Environment.WorkingSet;
+            healthDto.OSVersion = Environment.OSVersion.VersionString;
             return healthDto;
         }
 
@@ -51,6 +56,7 @@ namespace cfg.pi.services.DeviceServices
 
         private List<DeviceProcessorDto> GetDeviceProcessorsInformation() {
             var cpuCount = Environment.ProcessorCount;
+            
             return new List<DeviceProcessorDto>
             {
 
