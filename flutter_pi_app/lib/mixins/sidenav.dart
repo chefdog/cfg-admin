@@ -1,4 +1,3 @@
-import 'package:flutter_pi_app/pages/pi_details.dart';
 import 'package:flutter/material.dart';
 
 mixin SideNav {

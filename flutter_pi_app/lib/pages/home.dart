@@ -1,5 +1,6 @@
 import 'package:flutter_pi_app/mixins/sidenav.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pi_app/models/result.model.dart';
 import 'package:flutter_pi_app/models/system-information.model.dart';
 import 'package:flutter_pi_app/services/sys-info.service.dart';
 import '../widgets/dashboard-card.widget.dart';
@@ -11,30 +12,29 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
+class _HomePageState extends State<HomePage> with SideNav {
   final RestorableBool isSelected = RestorableBool(false);
-  late Future<SystemInformation> futureModels;
+  late Future<Result> futureResultModel;
 
-  @override
-  String get restorationId => 'dashboard';
+  // @override
+  // String get restorationId => 'dashboard';
 
-  @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    registerForRestoration(isSelected, 'is_selected');
-  }
+  // @override
+  // void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+  //   registerForRestoration(isSelected, 'is_selected');
+  // }
 
-  @override
-  void dispose() {
-    isSelected.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   isSelected.dispose();
+  //   super.dispose();
+  // }
 
   @override
   void initState() {
     super.initState();
-    futureModels = fetchSysInfo();
+    futureResultModel = fetchSysInfo();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +47,19 @@ class _HomePageState extends State<HomePage> with RestorationMixin, SideNav {
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           Container(
             padding: const EdgeInsets.all(32),
-            child: FutureBuilder<SystemInformation>(
-              future: futureModels,
+            child: FutureBuilder<Result>(
+              future: futureResultModel,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return DashboardCarWidget(
-                      title: snapshot.data!.environment, subTitle: '');
+                  var result = snapshot.data;
+                  if (result != null) {
+                    List<Object> si = result.data;
+                    List<DashboardCarWidget> widgets = [];
+                    for (final item in si) {
+                      widgets.add(DashboardCarWidget(
+                          title: item.environment, subTitle: ''));
+                    }
+                  }
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
