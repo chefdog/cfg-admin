@@ -1,7 +1,6 @@
 import 'package:flutter_pi_app/mixins/sidenav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/models/result.model.dart';
-import 'package:flutter_pi_app/models/system-information.model.dart';
 import 'package:flutter_pi_app/services/sys-info.service.dart';
 import '../widgets/dashboard-card.widget.dart';
 
@@ -51,15 +50,7 @@ class _HomePageState extends State<HomePage> with SideNav {
               future: futureResultModel,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  var result = snapshot.data;
-                  if (result != null) {
-                    List<Object> si = result.data;
-                    List<DashboardCarWidget> widgets = [];
-                    for (final item in si) {
-                      widgets.add(DashboardCarWidget(
-                          title: item.environment, subTitle: ''));
-                    }
-                  }
+                  return DashboardCarWidget(result: snapshot.requireData);
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }

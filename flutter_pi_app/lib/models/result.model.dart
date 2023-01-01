@@ -1,7 +1,7 @@
 class Result {
   final bool didError;
   final String error;
-  final List<Object> data;
+  final List<dynamic> data;
 
   const Result(
       {required this.didError, required this.error, required this.data});
