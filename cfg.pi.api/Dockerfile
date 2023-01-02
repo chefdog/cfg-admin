@@ -23,4 +23,4 @@ RUN dotnet publish "cfg.pi.webapi.csproj" -c Release -o /app/publish /p:UseAppHo
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "cfg.pi.webapi.dll"]
+ENTRYPOINT ["dotnet", "cfg.pi.webapi.dll"]   
