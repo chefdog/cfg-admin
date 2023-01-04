@@ -33,21 +33,24 @@ class DatabaseHelper {
     await db.execute(
         'CREATE TABLE $table($tableColumnId INTEGER PRIMARY KEY, $tableColumnIpaddress TEXT, $tableColumnIpaddressPort INTEGER)');
 
-    var model = PiConfig(id: 0, ipaddress: '192.168.178.24', port: '');
+    var model =
+        PiConfig(id: 0, ipaddress: '192.168.178.24', port: '', machineName: '');
     await db.insert(
       table,
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    model = PiConfig(id: 1, ipaddress: '192.168.178.25', port: '');
+    model =
+        PiConfig(id: 1, ipaddress: '192.168.178.25', port: '', machineName: '');
     await db.insert(
       table,
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    model = PiConfig(id: 2, ipaddress: '192.168.178.26', port: '');
+    model =
+        PiConfig(id: 2, ipaddress: '192.168.178.26', port: '', machineName: '');
     await db.insert(
       table,
       model.toMap(),
@@ -78,4 +81,3 @@ class DatabaseHelper {
     return await databaseFactory.openDatabase(path, options: dbOptions);
   }
 }
- 

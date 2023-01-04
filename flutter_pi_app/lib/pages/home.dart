@@ -1,13 +1,12 @@
 import 'package:flutter_pi_app/mixins/sidenav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/models/result.model.dart';
-import 'package:flutter_pi_app/services/sys-info.service.dart';
 import 'package:flutter_pi_app/viewmodels/pi-config.viewmodel.dart';
+import '../config/constants.dart';
 import '../widgets/dashboard-card-list-view.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-  final String title;
+  const HomePage({super.key});
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -21,14 +20,14 @@ class _HomePageState extends State<HomePage> with SideNav {
     super.initState();
     final vm = PiConfigViewModel();
     vm.loadData();
-    futureResultModel = fetchSysInfo();
+    // futureResultModel = fetchSysInfo('');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text(Config.homePageTitle),
       ),
       drawer: getDrawer(Theme.of(context)),
       body: Center(
