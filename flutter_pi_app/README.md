@@ -2,15 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+## Tutorials used for this app
 
-This project is a starting point for a Flutter application.
+How to use services : (https://medium.com/flutter-community/creating-services-to-do-the-work-in-your-flutter-app-93d6c4aa7697)
+A beginners guide to flutter architectur : (https://medium.com/flutter-community/a-beginners-guide-to-architecting-a-flutter-app-1e9053211a74)
+Creating cards list: (https://gallery.flutter.dev/#/demo/card)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

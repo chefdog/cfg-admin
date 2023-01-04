@@ -2,6 +2,7 @@ import 'package:flutter_pi_app/mixins/sidenav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/models/result.model.dart';
 import 'package:flutter_pi_app/services/sys-info.service.dart';
+import 'package:flutter_pi_app/viewmodels/pi-config.viewmodel.dart';
 import '../widgets/dashboard-card-list-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +19,8 @@ class _HomePageState extends State<HomePage> with SideNav {
   @override
   void initState() {
     super.initState();
+    final vm = PiConfigViewModel();
+    vm.loadData();
     futureResultModel = fetchSysInfo();
   }
 
