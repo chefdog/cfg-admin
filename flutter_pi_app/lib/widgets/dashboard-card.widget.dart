@@ -1,7 +1,3 @@
-/* @see : https://gallery.flutter.dev/#/demo/card
- * 
-*/
-
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/models/system-information.model.dart';
 import 'package:flutter_pi_app/widgets/sub-title.widget.dart';
