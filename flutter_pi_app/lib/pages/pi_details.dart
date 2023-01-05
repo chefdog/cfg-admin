@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../mixins/sidenav.dart';
-import '../models/system-information.model.dart';
+import '../models/result-system-information.model.dart';
 
 class PiDetailsPage extends StatefulWidget {
   const PiDetailsPage({super.key, required this.title});

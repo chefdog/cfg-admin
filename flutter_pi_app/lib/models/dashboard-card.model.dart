@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_pi_app/models/system-information.model.dart';
+import 'package:flutter_pi_app/models/result-system-information.model.dart';
 
 class DashboardCard {
   final bool didError;
@@ -15,7 +15,7 @@ class DashboardCard {
       didError: json['didError'],
       data: jsonDecode(json['data'])
           .map<SystemInformation>(
-              (object) => SystemInformation.fromJson(object))
+              (object) => SystemInformation.fromJson(object))  
           .toList(),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pi_app/models/system-information.model.dart';
+import 'package:flutter_pi_app/models/result-system-information.model.dart';
 import 'package:flutter_pi_app/widgets/dashboard-card.widget.dart';
 import '../models/result.model.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pi_app/models/system-information.model.dart';
+import 'package:flutter_pi_app/models/result-system-information.model.dart';
 import 'package:flutter_pi_app/widgets/sub-title.widget.dart';
 import 'section-title.widget.dart';
 
