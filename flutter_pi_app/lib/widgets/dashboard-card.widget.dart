@@ -3,28 +3,28 @@ import 'package:flutter_pi_app/models/result-system-information.model.dart';
 import 'package:flutter_pi_app/widgets/sub-title.widget.dart';
 import 'section-title.widget.dart';
 
-class DashboardCarWidget extends StatelessWidget {
-  const DashboardCarWidget({Key? key, required this.model}) : super(key: key);
+// class DashboardCarWidget extends StatelessWidget {
+//   const DashboardCarWidget({Key? key, required this.model}) : super(key: key);
 
-  final SystemInformation model;
+//   final SystemInformation model;
 
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: false,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            SectionTitle(title: model.machineName),
-            const SubTitle(title: ''),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       top: false,
+//       bottom: false,
+//       child: Padding(
+//         padding: const EdgeInsets.all(8),
+//         child: Column(
+//           children: [
+//             SectionTitle(title: model.machineName),
+//             const SubTitle(title: ''),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class DashboardCardWidget extends StatelessWidget {
   const DashboardCardWidget(

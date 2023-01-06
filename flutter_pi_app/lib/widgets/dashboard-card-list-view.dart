@@ -7,7 +7,7 @@ class DashboardCardListViewWidget extends StatelessWidget {
   const DashboardCardListViewWidget({Key? key, required this.result})
       : super(key: key);
 
-  final Result result;
+  final SystemInformationResult result;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,8 @@ class DashboardCardListViewWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            for (final item in result.data) DashboardCarWidget(model: SystemInformation.fromDynamic(item))
+            for (final item in result.data)
+              DashboardCardWidget(title: item.machineName, image: '')
           ],
         ),
       ),
