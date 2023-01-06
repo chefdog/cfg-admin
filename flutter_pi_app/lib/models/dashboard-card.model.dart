@@ -1,22 +1,20 @@
 import 'dart:convert';
-import 'package:flutter_pi_app/models/system-information.model.dart';
 
 class DashboardCard {
-  final bool didError;
-  final String error;
-  final List<SystemInformation> data;
+  // final bool didError;
+  // final String error;
 
-  const DashboardCard(
-      {required this.didError, required this.error, required this.data});
+  // const DashboardCard(
+  //     {required this.didError, required this.error, required this.data});
 
-  factory DashboardCard.fromJson(Map<String, dynamic> json) {
-    return DashboardCard(
-      error: json['error'],
-      didError: json['didError'],
-      data: jsonDecode(json['data'])
-          .map<SystemInformation>(
-              (object) => SystemInformation.fromJson(object))
-          .toList(),
-    );
-  }
+  // factory DashboardCard.fromJson(Map<String, dynamic> json) {
+  //   return DashboardCard(
+  //     error: json['error'],
+  //     didError: json['didError'],
+  //     data: jsonDecode(json['data'])
+  //         .map<SystemInformation>(
+  //             (object) => SystemInformation.fromJson(object))
+  //         .toList(),
+  //   );
+  // }
 }

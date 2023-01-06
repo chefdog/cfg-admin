@@ -28,14 +28,17 @@ class StoragePiConfgService extends StorageDatabaseService {
     ];
 
     if (db != null) {
-      List<Map> result =
+      List<Map> maps =
           await db.query(DatabaseHelper.table, columns: columnsToSelect);
-      List<PiConfig> data = [];
-      for (var item in result) {
-        PiConfig model = PiConfig.fromDynamicMap(item);
-        data.add(model);
-      }
-      return data;
+
+      return List.generate(maps.length, (i) {
+        return PiConfig(
+          id: maps[i]['id'],
+          ipaddress: maps[i]['ipaddress'],
+          port: maps[i]['port'],
+          machineName: ''
+        );
+      });
     }
     return [];
   }

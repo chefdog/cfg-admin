@@ -1,13 +1,9 @@
+import 'package:flutter/foundation.dart';
+
 class SystemInformation {
   final String machineName;
 
-  const SystemInformation({required this.machineName});
-
-  factory SystemInformation.fromJson(Map<String, dynamic> json) {
-    return SystemInformation(
-      machineName: json['machineName'],
-    );
-  }
+  SystemInformation({required this.machineName});
 
   factory SystemInformation.fromDynamic(dynamic data) {
     return SystemInformation(
