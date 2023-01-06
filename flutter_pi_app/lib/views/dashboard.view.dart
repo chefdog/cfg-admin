@@ -24,7 +24,14 @@ class DashboardView extends StatelessWidget {
             future: model.piConfigs,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.requireData.first.ipaddress);
+                return ListView.builder(
+                    itemCount: snapshot.requireData.length,
+                    itemBuilder: (builderContext, index) {
+                      final item = snapshot.requireData[index];
+                      return ListTile(
+                        title: Text(item.ipaddress),
+                      );
+                    });
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
