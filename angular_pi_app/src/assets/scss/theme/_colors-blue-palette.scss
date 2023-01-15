@@ -1,0 +1,24 @@
+$cfg-admin-blue-palette: (
+    50: #E1F5FE,
+    100: #B3E5FC,
+    200: #81D4FA,
+    300: #4FC3F7,
+    400: #29B6F6,
+    500: #03A9F4,
+    600: #039BE5,
+    700: #0288D1,
+    800: #0277BD,
+    900: #01579B,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: white,
+    )
+);

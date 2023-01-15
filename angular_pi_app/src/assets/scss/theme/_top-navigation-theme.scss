@@ -1,0 +1,35 @@
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+
+    $color-config: mat.get-color-config($theme);
+    $cfg-white: map.get($color-config, 'primary');  
+    
+    .navbar {
+        &.logo {
+        &::after {
+            background-color: #66615b;
+            opacity: .4;
+        }
+        }
+    }
+
+    .navbar-brand {
+        background-color: $cfg-white;   
+        color:$cfg-black; 
+        box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+        border-bottom: $cfg-black;
+    }
+
+    a {
+        &.nav-link {
+            color:$cfg-black;
+            &:hover {
+                color:$cfg-primary;
+            }
+        }
+    }
+}
+ 

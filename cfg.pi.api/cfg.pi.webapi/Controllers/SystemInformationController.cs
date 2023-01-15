@@ -8,26 +8,21 @@ namespace cfg.pi.webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SystemInformationController : ControllerBase
+    public class SystemInformationController : BaseController
     {
         private DeviceService deviceService;
 
-        public SystemInformationController(DeviceService service)
+        public SystemInformationController(ILogger<SystemInformationController> controllerLogger, DeviceService service)
         {
             deviceService = service;
+            logger = controllerLogger;
         }
 
 
         [HttpGet]
         public async Task<IActionResult> GetHealthProbeAsync()
         {
-            var result = await deviceService.GetDevices();
-            var response = new ResponseModel<List<HealthDto>> {
-                Data = result,
-                DidError = false,
-                Error = string.Empty
-            };
-            return Ok(response);
+            return await ToApiResponse(() => deviceService.GetDevices());
         }
     }
 }

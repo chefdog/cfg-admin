@@ -8,3 +8,7 @@ How to use services : (https://medium.com/flutter-community/creating-services-to
 A beginners guide to flutter architectur : (https://medium.com/flutter-community/a-beginners-guide-to-architecting-a-flutter-app-1e9053211a74)
 Creating cards list: (https://gallery.flutter.dev/#/demo/card)
 
+How to themes: (https://www.kodeco.com/16628777-theming-a-flutter-app-getting-started)
+
+
+
