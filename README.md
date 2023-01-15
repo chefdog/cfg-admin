@@ -43,4 +43,4 @@ samples, guidance on mobile development, and a full API reference.
 
 See paper dashboard : (https://demos.creative-tim.com/paper-dashboard-angular/#/dashboard)
 
-See material color: (https://m2.material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=01579B&secondary.color=006064)
+See material color: (https://m3.material.io/theme-builder#/dynamic)

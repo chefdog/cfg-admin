@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/config/constants.dart';
 import 'package:flutter_pi_app/services/service_locator.dart';
+import 'package:flutter_pi_app/themes/dark_color_scheme.dart';
+import 'package:flutter_pi_app/themes/light_theme.dart';
 import 'package:flutter_pi_app/views/dashboard.view.dart';
-import 'mixins/admin_theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +11,7 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget with AdminTheme {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget with AdminTheme {
     return MaterialApp(
       title: Config.appTitle,
       debugShowCheckedModeBanner: false,
-      theme: getTheme(),
+      theme: LightTheme.theme,
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       home: const DashboardView(),
     );
   }

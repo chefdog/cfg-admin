@@ -1,0 +1,5 @@
+@use './side-navigation-theme' as sidenav;
+
+@mixin theme($theme, $typography-config) {
+    @include sidenav.theme($theme, $typography-config);
+}
