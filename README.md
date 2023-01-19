@@ -38,9 +38,3 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-
-## references
-
-See paper dashboard : (https://demos.creative-tim.com/paper-dashboard-angular/#/dashboard)
-
-See material color: (https://m3.material.io/theme-builder#/dynamic)
