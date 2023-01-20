@@ -9,6 +9,21 @@ class LightTheme {
       listTileTheme: ListTileThemeData(
         iconColor: lightColorScheme.primary,
       ),
+      buttonTheme: ButtonThemeData(buttonColor: lightColorScheme.background),
     );
+  }
+
+  static ButtonStyle get cardButtonStyle {
+    return TextButton.styleFrom(
+      textStyle: const TextStyle(
+        fontSize: 20,
+        color: Colors.white,
+      ),
+      backgroundColor: lightColorScheme.primary,
+    );
+  }
+
+  static TextStyle get textStyle {
+    return TextStyle(color: lightColorScheme.background);
   }
 }
