@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 
 import 'package:flutter_pi_app/services/storage-database.service.dart';
 
-class StoragePiConfgService extends StorageDatabaseService {
+class StorageDatabasePiConfgService extends StorageService {
   @override
   Future<void> create(PiConfig model) async {
     Database? db = await DatabaseHelper.instance.database;
@@ -33,11 +33,10 @@ class StoragePiConfgService extends StorageDatabaseService {
 
       return List.generate(maps.length, (i) {
         return PiConfig(
-          id: maps[i]['id'],
-          ipaddress: maps[i]['ipaddress'],
-          port: maps[i]['port'],
-          machineName: ''
-        );
+            id: maps[i]['id'],
+            ipaddress: maps[i]['ipaddress'],
+            port: maps[i]['port'],
+            machineName: '');
       });
     }
     return [];

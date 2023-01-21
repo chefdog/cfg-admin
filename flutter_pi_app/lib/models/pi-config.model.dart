@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 class PiConfig {
-  final int id;
+  final String id;
   final String ipaddress;
   final String port;
   late final String? machineName;
@@ -13,6 +15,9 @@ class PiConfig {
   Map<String, dynamic> toMap() {
     return {'id': id, 'ipaddress': ipaddress, 'port': port};
   }
+
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'ipaddress': ipaddress, 'port': port};
 
   factory PiConfig.fromDynamicMap(Map<dynamic, dynamic> data) {
     return PiConfig(

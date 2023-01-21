@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/config/constants.dart';
+import 'package:flutter_pi_app/models/pi-config.model.dart';
 import 'package:flutter_pi_app/viewmodels/pi-config.viewmodel.dart';
 import 'package:flutter_pi_app/widgets/filled-card.widget.dart';
+import 'package:flutter_pi_app/widgets/outlined-card.widget.dart';
 import 'package:stacked/stacked.dart';
 
 class DashboardView extends StatelessWidget {
@@ -19,34 +21,29 @@ class DashboardView extends StatelessWidget {
         appBar: AppBar(
           title: const Text(Config.homePageTitle),
         ),
-        body: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 4,
-          children: const <Widget>[
-            FilledCard(
-              title: 'First card',
-              subtitle:
-                  'Keep in touch with your friends and family with free international chats, calls, and even games. Landkit connects you with the world.',
-              icon: Icons.computer_rounded,
-              buttonText: 'Next',
-            ),
-            FilledCard(
-              title: 'First card',
-              subtitle: 'Sub title here',
-              icon: Icons.computer_rounded,
-              buttonText: 'Next',
-            ),
-            FilledCard(
-              title: 'First card',
-              subtitle: 'Sub title here',
-              icon: Icons.computer_rounded,
-              buttonText: 'Next',
-            ),
-          ],
-        ),
+        body: FutureBuilder<List<PiConfig>>(
+            future: model.piConfigs,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return GridView.builder(
+                    itemCount: snapshot.data!.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    itemBuilder: (builderContext, index) {
+                      //  final item = snapshot.data!.;
+                      return const FilledCard(
+                        title: 'title',
+                        subtitle:
+                            'Keep in touch with your friends and family with free international chats, calls, and even games. Landkit connects you with the world.',
+                        icon: Icons.computer_rounded,
+                        buttonText: 'Next',
+                      );
+                    });
+              }
+              return const CircularProgressIndicator();
+            }),
       ),
     );
   }
