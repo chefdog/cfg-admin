@@ -30,7 +30,7 @@ class StorageSharedPreferencesPiConfigService extends StorageService {
         result.add(model);
       }
     }
-    result.add(emptyModel);
+
     return result;
   }
 }

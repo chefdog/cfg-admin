@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pi_app/themes/light_theme.dart';
 import 'package:flutter_pi_app/views/product-detail.view.dart';
 
 class OutlinedCard extends StatelessWidget {
@@ -45,7 +44,7 @@ class OutlinedCard extends StatelessWidget {
                   children: [
                     IconButton(
                       padding: const EdgeInsets.all(10),
-                      style: LightTheme.cardButtonStyle,
+                      // style: LightTheme.cardButtonStyle,
                       icon: const Icon(
                         Icons.add,
                         color: Colors.white,
