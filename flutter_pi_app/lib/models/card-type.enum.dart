@@ -1,0 +1,1 @@
+enum CardType { outlined, filled }

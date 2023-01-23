@@ -34,8 +34,9 @@ class StorageDatabasePiConfgService extends StorageService {
       return List.generate(maps.length, (i) {
         return PiConfig(
             id: maps[i]['id'],
-            ipaddress: maps[i]['ipaddress'],
+            ipAddress: maps[i]['ipAddress'],
             port: maps[i]['port'],
+            cardType: maps[i]['cardType'],
             machineName: '');
       });
     }
