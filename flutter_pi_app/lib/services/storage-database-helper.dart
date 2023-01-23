@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_pi_app/models/card-type.enum.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -33,24 +34,36 @@ class DatabaseHelper {
     await db.execute(
         'CREATE TABLE $table($tableColumnId INTEGER PRIMARY KEY, $tableColumnIpaddress TEXT, $tableColumnIpaddressPort INTEGER)');
 
-    var model =
-        PiConfig(id: 0, ipaddress: '192.168.178.24', port: '', machineName: '');
+    var model = PiConfig(
+        id: '0',
+        ipAddress: '192.168.178.24',
+        port: '',
+        machineName: '',
+        cardType: CardType.filled);
     await db.insert(
       table,
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    model =
-        PiConfig(id: 1, ipaddress: '192.168.178.25', port: '', machineName: '');
+    model = PiConfig(
+        id: '1',
+        ipAddress: '192.168.178.25',
+        port: '',
+        machineName: '',
+        cardType: CardType.filled);
     await db.insert(
       table,
       model.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    model =
-        PiConfig(id: 2, ipaddress: '192.168.178.26', port: '', machineName: '');
+    model = PiConfig(
+        id: '2',
+        ipAddress: '192.168.178.26',
+        port: '',
+        machineName: '',
+        cardType: CardType.filled);
     await db.insert(
       table,
       model.toMap(),
