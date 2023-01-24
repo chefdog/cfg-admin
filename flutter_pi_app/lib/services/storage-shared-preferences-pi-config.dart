@@ -12,15 +12,13 @@ class StorageSharedPreferencesPiConfigService extends StorageService {
   @override
   Future<void> create(PiConfig model) async {
     final SharedPreferences prefs = await sharedPreferences;
-    prefs.setString(model.id, model.toJson().toString());
+    prefs.setString(model.id.toString(), model.toJson().toString());
   }
 
   @override
   Future<List<PiConfig>> getConfigs() async {
     final SharedPreferences prefs = await sharedPreferences;
     List<PiConfig> result = [];
-    PiConfig emptyModel =
-        PiConfig(id: '0', ipAddress: '', cardType: CardType.outlined, port: '');
     var keys = prefs.getKeys();
     for (var element in keys) {
       var data = prefs.getString(element);
@@ -30,7 +28,28 @@ class StorageSharedPreferencesPiConfigService extends StorageService {
         result.add(model);
       }
     }
-    result.add(emptyModel);
+
+    var model = PiConfig(
+        id: 0,
+        description: 'Lorum ipsum',
+        ipAddress: '133.12.12.1',
+        port: '24');
+    result.add(model);
+
+    model = PiConfig(
+        id: 1,
+        description: 'Lorum ipsum',
+        ipAddress: '133.12.12.2',
+        port: '24');
+    result.add(model);
+
+    model = PiConfig(
+        id: 2,
+        description: 'Lorum ipsum',
+        ipAddress: '133.12.12.3',
+        port: '24');
+    result.add(model);
+
     return result;
   }
 }
