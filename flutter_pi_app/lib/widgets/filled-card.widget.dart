@@ -4,12 +4,14 @@ import 'package:flutter_pi_app/views/product-detail.view.dart';
 class FilledCard extends StatelessWidget {
   const FilledCard(
       {Key? key,
+      required this.id,
       required this.title,
       required this.subtitle,
       required this.buttonText,
       required this.icon})
       : super(key: key);
 
+  final int id;
   final String title;
   final String subtitle;
   final String buttonText;
@@ -17,46 +19,34 @@ class FilledCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100,
+    return Center(
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 10,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
+              leading: const Icon(Icons.air),
               title: Text(title),
               subtitle: Text(subtitle),
-              leading: Icon(icon),
             ),
-            Expanded(
-              child: Align(
-                alignment: FractionalOffset.bottomRight,
-                child: ButtonBar(
-                  alignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      padding: const EdgeInsets.all(10),
-                      // style: LightTheme.cardButtonStyle,
-                      icon: const Icon(
-                        Icons.arrow_forward_outlined,
-                        color: Colors.white,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                const SizedBox(width: 8),
+                TextButton(
+                  child: Text(buttonText),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailView(
+                          productId: id,
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const ProductDetailView(),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              ),
+                const SizedBox(width: 8),
+              ],
             ),
           ],
         ),

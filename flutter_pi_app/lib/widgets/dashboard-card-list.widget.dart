@@ -26,6 +26,7 @@ class DashboardCardList extends StatelessWidget {
                     final item = snapshot.requireData[index];
 
                     return FilledCard(
+                      id: item.id,
                       title: item.ipAddress,
                       subtitle: '',
                       icon: Icons.computer_rounded,

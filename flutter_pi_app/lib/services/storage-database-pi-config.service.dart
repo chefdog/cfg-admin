@@ -36,7 +36,7 @@ class StorageDatabasePiConfgService extends StorageService {
             id: maps[i]['id'],
             ipAddress: maps[i]['ipAddress'],
             port: maps[i]['port'],
-            cardType: maps[i]['cardType'],
+            description: maps[i]['description'],
             machineName: '');
       });
     }

@@ -35,11 +35,11 @@ class DatabaseHelper {
         'CREATE TABLE $table($tableColumnId INTEGER PRIMARY KEY, $tableColumnIpaddress TEXT, $tableColumnIpaddressPort INTEGER)');
 
     var model = PiConfig(
-        id: '0',
+        id: 0,
         ipAddress: '192.168.178.24',
         port: '',
         machineName: '',
-        cardType: CardType.filled);
+        description: 'Lorum ipsum');
     await db.insert(
       table,
       model.toMap(),
@@ -47,11 +47,11 @@ class DatabaseHelper {
     );
 
     model = PiConfig(
-        id: '1',
+        id: 1,
         ipAddress: '192.168.178.25',
         port: '',
         machineName: '',
-        cardType: CardType.filled);
+        description: 'Lorum ipsum');
     await db.insert(
       table,
       model.toMap(),
@@ -59,11 +59,11 @@ class DatabaseHelper {
     );
 
     model = PiConfig(
-        id: '2',
+        id: 2,
         ipAddress: '192.168.178.26',
         port: '',
         machineName: '',
-        cardType: CardType.filled);
+        description: 'Lorum ipsum');
     await db.insert(
       table,
       model.toMap(),

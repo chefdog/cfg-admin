@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pi_app/config/constants.dart';
 import 'package:flutter_pi_app/models/pi-config.model.dart';
 import 'package:flutter_pi_app/viewmodels/pi-config.viewmodel.dart';
-import 'package:flutter_pi_app/widgets/dashboard-card-list.widget.dart';
 import 'package:flutter_pi_app/widgets/filled-card.widget.dart';
 import 'package:flutter_pi_app/widgets/screen-title.widget.dart';
+import 'package:flutter_pi_app/widgets/splash-image.widget.dart';
 import 'package:stacked/stacked.dart';
 
 class DashboardView extends StatefulWidget {
@@ -54,44 +54,47 @@ class _DashboardStateWidget extends State<DashboardView> {
           // selectedItemColor: Colors.amber[800],
           onTap: _onItemTapped,
         ),
-        body: ListView(
-          children: [
-            const Center(
-              child: ScreenTitle(
-                title: Config.splashWelcome,
-              ),
-            ),
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
-                child: Image.asset(
-                  "images/pi-splash.png",
-                  width: 300,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            FutureBuilder<List<PiConfig>>(
-              future: model.piConfigs,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  var cnt = snapshot.data!.length;
-
-                  return GridView.builder(
-                    gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: cnt,
+        body: FutureBuilder<List<PiConfig>>(
+          future: model.piConfigs,
+          builder: (context, snapshot) {
+            return ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: snapshot.data == null ? 2 : snapshot.data!.length + 2,
+              itemBuilder: (builderContext, int index) {
+                if (index == 0) {
+                  return const Center(
+                    child: ScreenTitle(
+                      title: Config.splashWelcome,
                     ),
-                    itemCount: cnt,
-                    itemBuilder: (builderContext, int index) {
-                      return const Card();
-                    },
+                  );
+                }
+                if (index == 1) {
+                  return const Center(
+                    child: SplashImage(
+                      imageAsset: "images/pi-splash.png",
+                      imageWidth: 334,
+                      imageHeight: 200,
+                    ),
+                  );
+                }
+
+                index -= 2;
+                if (snapshot.hasData) {
+                  final item = snapshot.requireData[index];
+                  return Center(
+                    child: FilledCard(
+                      id: item.id,
+                      title: item.ipAddress,
+                      icon: Icons.stars,
+                      subtitle: item.description,
+                      buttonText: 'edit',
+                    ),
                   );
                 }
                 return const CircularProgressIndicator();
               },
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

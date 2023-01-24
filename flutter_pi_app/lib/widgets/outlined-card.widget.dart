@@ -50,11 +50,7 @@ class OutlinedCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const ProductDetailView(),
-                          ),
-                        );
+                        print('hallo');
                       },
                     ),
                   ],
@@ -65,22 +61,5 @@ class OutlinedCard extends StatelessWidget {
         ),
       ),
     );
-
-    // return Center(
-    //   child: Card(
-    //     elevation: 0,
-    //     shape: RoundedRectangleBorder(
-    //       side: BorderSide(
-    //         color: Theme.of(context).colorScheme.outline,
-    //       ),
-    //       borderRadius: const BorderRadius.all(Radius.circular(12)),
-    //     ),
-    //     child: const SizedBox(
-    //       width: 300,
-    //       height: 100,
-    //       child: Center(child: Text('Outlined Card')),
-    //     ),
-    //   ),
-    // );
   }
 }

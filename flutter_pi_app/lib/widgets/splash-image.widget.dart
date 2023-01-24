@@ -7,7 +7,7 @@ class SplashImage extends StatelessWidget {
       required this.imageHeight,
       super.key});
 
-  final AssetImage imageAsset;
+  final String imageAsset;
   final double imageWidth;
   final double imageHeight;
 
@@ -16,7 +16,7 @@ class SplashImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Image.asset(
-        imageAsset.assetName,
+        "images/pi-splash.png",
         width: imageWidth,
         height: imageHeight,
         fit: BoxFit.cover,

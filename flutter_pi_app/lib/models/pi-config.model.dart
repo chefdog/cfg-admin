@@ -1,17 +1,15 @@
-import 'dart:convert';
-
 import 'package:flutter_pi_app/models/card-type.enum.dart';
 
 class PiConfig {
-  final String id;
+  final int id;
   final String ipAddress;
+  final String description;
   final String port;
-  final CardType cardType;
   late final String? machineName;
 
   PiConfig(
       {required this.id,
-      required this.cardType,
+      required this.description,
       required this.ipAddress,
       required this.port,
       this.machineName});
@@ -21,17 +19,20 @@ class PiConfig {
       'id': id,
       'ipAddress': ipAddress,
       'port': port,
-      'cardType': cardType
     };
   }
 
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'ipAddress': ipAddress, 'port': port, 'cardType': cardType};
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'ipAddress': ipAddress,
+        'port': port,
+        'description': description
+      };
 
   factory PiConfig.fromDynamicMap(Map<dynamic, dynamic> data) {
     return PiConfig(
         id: data["id"],
-        cardType: data["cardType"],
+        description: data['description'],
         ipAddress: data["ipAddress"],
         port: data["port"],
         machineName: '');
@@ -39,6 +40,6 @@ class PiConfig {
 
   @override
   String toString() {
-    return 'PiConfig{id: $id, ipaddress: $ipAddress, port: $port, cardType: $cardType }';
+    return 'PiConfig{id: $id, ipaddress: $ipAddress, port: $port, description: $description }';
   }
 }

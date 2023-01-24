@@ -5,13 +5,11 @@ class ElevatedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Card(
-        child: SizedBox(
-          width: 300,
-          height: 100,
-          child: Center(child: Text('Elevated Card')),
-        ),
+    return const Card(
+      child: SizedBox(
+        width: 100,
+        height: 100,
+        child: Center(child: Text('Elevated Card')),
       ),
     );
   }
